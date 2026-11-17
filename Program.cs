@@ -1,11 +1,19 @@
-﻿Livro livro;
-livro = CriarLivro();
+﻿Console.WriteLine("Informe quantos livros você quer cadastrar: ");
+int tamanho = int.Parse(Console.ReadLine());
 
-Livro CriarLivro(){
+Livro[] livros = new Livro[tamanho];
+
+CadastrarLivros();
+ExibirLivros(livros);
+
+Livro CriarLivro()
+{
     Console.WriteLine("Insira o Titulo do livro: ");
     string titulo = Console.ReadLine();
+
     Console.WriteLine("Insira o Autor do livro: ");
     string autor = Console.ReadLine();
+
     Console.WriteLine("Insira a Quantidade de Páginas do livro: ");
     int qtdPaginas = int.Parse(Console.ReadLine());
 
@@ -13,7 +21,18 @@ Livro CriarLivro(){
     return livro;
 }
 
-Console.WriteLine(livro.getAutor(livro));
-Console.WriteLine(livro.getTitulo(livro));
-Console.WriteLine(livro.getNumeroDePaginas(livro));
-Console.WriteLine(livro.ToString());
+void CadastrarLivros()
+{
+    for (int i = 0; i < livros.Length; i++)
+    {
+        livros[i] = CriarLivro();
+    }
+}
+
+void ExibirLivros(Livro[] livros)
+{
+    for (int i = 0; i < livros.Length; i++)
+    {
+        Console.WriteLine(livros[i].ToString());
+    }
+}
